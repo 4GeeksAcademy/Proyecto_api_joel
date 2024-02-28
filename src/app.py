@@ -1,5 +1,4 @@
 import os
-from sqlalchemy import create_engine
 import pandas as pd
 from dotenv import load_dotenv
 import spotipy
@@ -29,7 +28,9 @@ df = pd.DataFrame(data)
 
 df = df.sort_values(by='popularity',ascending=False)
 print(df.head(3))
-corelacion = df.corr()
+
+df_num = df.drop(columns='name')
+corelacion = df_num.corr()
 print(corelacion)
 
 
